@@ -27,6 +27,7 @@ int main(void)
     {
 
         population = population + population / 3 - population / 4;
+        population =  (int) population;
         years++;
     }
    while (population <= end);
