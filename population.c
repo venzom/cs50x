@@ -17,7 +17,7 @@ int main(void)
     {
         end = get_int("End size: ");
     }
-    while ( start >= end);
+    while ( end < start);
 
     // TODO: Calculate number of years until we reach threshold
     float population = (float)start;
