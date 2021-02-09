@@ -20,7 +20,7 @@ int main(void)
     while ( end < start);
 
     // TODO: Calculate number of years until we reach threshold
-    double population = (double)start;
+    int population = start;
     int years = 0;
 
     while (population < end)
