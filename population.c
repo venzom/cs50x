@@ -21,16 +21,15 @@ int main(void)
 
     // TODO: Calculate number of years until we reach threshold
     double population = (double)start;
-    int years = -1;
+    int years = 0;
 
-    do
+    while (population < end)
     {
 
         population = population + population / 3 - population / 4;
-        population =  (int) population;
         years++;
     }
-   while (population <= end);
+   
 
     // TODO: Print number of years
     printf("Years: %i\n", years);
