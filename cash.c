@@ -13,8 +13,8 @@ int main(void)
     n = get_float("Change Owed: ");
     }
     while (n <= 0);
-    float change = n - (int)n;
-    
+    //float change = n - (int)n;
+    float change = n;
     int cents = round(change *100);
     int coins = 0;
     
