@@ -16,7 +16,7 @@ int main(void)
     
     if (n > 4000000000000 && n <= 4999999999999)
     {
-        printf("Visa\n");
+        printf("VISA\n");
     }
     else if (n > 3400000000000 && n < 380000000000000)
     {
@@ -24,15 +24,15 @@ int main(void)
     }
     else if (n > 40000000000000 && n <= 4999999999999999)
     {
-        printf("Visa\n");
+        printf("VISA\n");
     }
     else if (n > 51000000000000 && n < 5600000000000000)
     {
-        printf("Mastercard\n");
+        printf("MASTERCARD\n");
     }
     else
     {
-        printf("Invalid");
+        printf("INVALID\n");
     }
     
 }
