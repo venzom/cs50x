@@ -16,7 +16,7 @@ int main(void)
     // Assign n to m for 'for' loop so it doesn' affect n
     int m = n;
     
-    char hash[128];
+    char hash[128] = "";
     char ch = '#';
     
     char space[128] = " ";
