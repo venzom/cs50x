@@ -33,6 +33,6 @@ int main(void)
         m--;
         space[m] = '#';
         strncat(hash, &ch, 1);
-        printf("%s %s\n", space, hash);
+        printf("%s  %s\n", space, hash);
     }
 }
