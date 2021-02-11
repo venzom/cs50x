@@ -10,9 +10,9 @@ int main(void)
     long n;
     do
     {
-    n = get_long("Number: ");
+        n = get_long("Number: ");
     }
-    while (n < 0);//(n < 999999999999 || n > 10000000000000000);
+    while (n < 0);
     
     // Count number of digits in Array
     int c = 0; 
