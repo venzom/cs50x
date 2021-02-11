@@ -63,7 +63,7 @@ int main(void)
     {
         printf("INVALID\n");
     }
-    // Determine what type of card it is
+    // Determine what type of card it is and print result
     else if ((c == 13 || c == 16) && (cc[12] == 4 || cc[15] == 4))
     {
         printf("VISA\n");
@@ -80,29 +80,4 @@ int main(void)
     {
         printf("INVALID\n");
     }
-    /*if (n > 4000000000000 && n <= 4999999999999)
-    {
-        printf("VISA\n");
-    }
-    else if (n > 3400000000000 && n < 350000000000000)
-    {
-        printf("AMEX\n");
-    }
-    else if (n > 3700000000000 && n < 380000000000000)
-    {
-        printf("AMEX\n");
-    }
-    else if (n > 4000000000000000 && n <= 4999999999999999)
-    {
-        printf("VISA\n");
-    }
-    else if (n > 5100000000000000 && n < 5600000000000000)
-    {
-        printf("MASTERCARD\n");
-    }
-    else
-    {
-        printf("INVALID\n");
-    }*/
-    //printf("%i\n", sum);
 }
