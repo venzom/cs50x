@@ -40,12 +40,12 @@ int count_letters(string s)
 {
     int letters = 0;
     for (int i = 0, n = strlen(s); i < n; i++)
+    {
+        if ((s[i] >= 'a' && s[i] <= 'z') || (s[i] >= 'A' && s[i] <= 'Z'))
         {
-            if ((s[i] >= 'a' && s[i] <= 'z') || (s[i] >= 'A' && s[i] <= 'Z'))
-            {
-                letters++;
-            }
+            letters++;
         }
+    }
     return letters;
 }
 
@@ -55,12 +55,12 @@ int count_spaces(string s)
 {
     int words = 0;
     for (int i = 0, n = strlen(s); i < n; i++)
+    {
+        if (s[i] == 32)
         {
-            if (s[i] == 32)
-            {
-                words++;
-            }
+            words++;
         }
+    }
     return words + 1;
 }
 
@@ -69,11 +69,11 @@ int count_p(string s)
 {
     int sent = 0;
     for (int i = 0, n = strlen(s); i < n; i++)
+    {
+        if (s[i] == 33 || s[i] == 46 || s[i] == 63)
         {
-            if (s[i] == 33 || s[i] == 46 || s[i] == 63)
-            {
-                sent++;
-            }
+            sent++;
         }
+    }
     return sent;
 }
