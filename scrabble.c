@@ -31,6 +31,8 @@ int main(void)
     {
         printf("Player 2 wins!\n");
     }
+    
+    // printf("1: %i 2: %i\n", score1, score2);
 }
 
 int compute_score(string word) // Compute and return score for string
@@ -39,34 +41,24 @@ int compute_score(string word) // Compute and return score for string
     int array[25];
     int A = 65;
     int sum = 0;
-    // Make all words CAPS for ease of manipulations, compare it 
+    // Make all words CAPS for ease of manipulations, ignore all characters, and add the score for each letter
     int upper; 
-    int score = 0; 
-    for (int i = 0, n = strlen(word); i < n; i++)
+    for (int j = 0; j < 26; j++)
     {
-        for (int j = 0; j < 26; j++)
+        array[j] = A;
+        A++;
+        for (int i = 0, n = strlen(word); i < n; i++)
         {
-            array[j] = A;
-            A++;
-    
-            if (word[i] >= 'a' && word[i] <= 'z')
+        
+            if ((word[i] >= 'a' && word[i] <= 'z') && ((word[i] - 32) == array[j]))
             {
-                upper = word[i] - 32;
-                if (upper == array[j])
-                {
                     sum = sum + POINTS[j];
-                }
             }
-            else
+            else if ((word[i] >= 'A' && word[i] <= 'Z') && (word[i] == array[j]))
             {
-                upper = word[i];
-                if (upper == array[j])
-                {
                     sum = sum + POINTS[j];
-                }
             }
         }
     }
-    
     return sum; 
 }
