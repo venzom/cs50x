@@ -27,9 +27,27 @@ int main(int argc, string argv[])
     printf("ciphertext: ");
     for (int i = 0; i < n; i++)
     {
-        cipher = (int)plain[i] + key;
-        //cipher[i] = (plain[i] + key) % 26;
-        printf("%c", (char)cipher);
+        if ((plain[i] >= 'a' && plain[i] <= 'z') || (plain[i] >= 'A' && plain[i] <= 'Z'))
+        {
+            cipher = (int)plain[i] + key;
+            //cipher[i] = (plain[i] + key) % 26;
+            if (cipher > 122)
+            {
+                cipher = cipher - 122 + 96;    
+            }
+            else if (cipher > 90)
+            {
+                cipher = cipher - 90 + 64;    
+            }
+            
+            printf("%c", (char)cipher);
+        }
+        else 
+        {
+            cipher = (int)plain[i];
+            printf("%c", (char)cipher);
+        }
+        
     }
     printf("\n");
     
