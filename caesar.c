@@ -27,26 +27,45 @@ int main(int argc, string argv[])
     printf("ciphertext: ");
     for (int i = 0; i < n; i++)
     {
-        if ((plain[i] >= 'a' && plain[i] <= 'z') || (plain[i] >= 'A' && plain[i] <= 'Z'))
+        if (plain[i] >= 'a' && plain[i] <= 'z')
         {
-            cipher = (int)plain[i] + key;
+            cipher = (((((int)plain[i] - 97) + 26) + key) % 26) + 97;
+            printf("%c", (char)cipher);
+        }
+        else if (plain[i] >= 'A' && plain[i] <= 'Z')
+        {
+            cipher = (((((int)plain[i] - 65) + 26) + key) % 26) + 65;
+            printf("%c", (char)cipher);
+        }
+            /*cipher = (int)plain[i] + key;
             //cipher[i] = (plain[i] + key) % 26;
             if (cipher > 122)
             {
                 cipher = cipher - 122 + 96;    
             }
-            else if (cipher > 90)
+            else if (cipher > 90 && cipher < 97)
             {
-                cipher = cipher - 90 + 64;    
+                cipher = (cipher % 26) + 64;    
             }
             
-            printf("%c", (char)cipher);
-        }
+        if ((plain[i] >= 'a' && plain[i] <= 'z') || (plain[i] >= 'A' && plain[i] <= 'Z'))
+        {
+            cipher = (int)plain[i] + key;
+            //cipher[i] = (plain[i] + key) % 26;
+            if ((cipher > 122) && (plain[i] >= 'a' && plain[i] <= 'z'))
+            {
+                cipher = cipher - 122 + 96;    
+            }
+            else if ((cipher > 90) && (plain[i] >= 'A' && plain[i] <= 'Z'))
+            {
+                cipher = cipher - 90 + 64;    
+            }*/
+            
         else 
         {
             cipher = (int)plain[i];
             printf("%c", (char)cipher);
-        }
+        }   
         
     }
     printf("\n");
