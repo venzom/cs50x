@@ -5,21 +5,27 @@
 
 int main(int argc, string argv[])
 {
-    int len = strlen(argv[1]);
-    char upp = 'A', low = 'a';
-    // Check to make sure user provides command-line argument(CLA)
-    if (argc != 2 || argc == 1)
+    
+    // Check to make sure user provides at least 1, but no more than, command-line argument(CLA)
+    if (argc == 1 || argc != 2)
     {
         printf("Usage: ./substitution key\n");
         return 1;
     }
+    
+    // Check to make sure "key" CLA is exactly 26 characters
+    int len = strlen(argv[1]);
     if (len != 26)
     {
         printf("Key must containg 26 characters.\n");
         return 1;
     } 
-    string key = argv[1];
     
+    
+    // Make sure "key" CLA only contains alphabetic characters and doesn't contain repeated characters
+    string key = argv[1];
+    char upp = 'A', low = 'a';
+    int count = 0;
     for (int i = 0; i < len; i++)
     {
         if (!(key[i] >= 'a' && key[i] <= 'z' ) && !(key[i] >= 'A' && key[i] <= 'Z'))
@@ -27,7 +33,23 @@ int main(int argc, string argv[])
             printf("Key must only contain alphabetic characters.\n");
             return 1; 
         }
-
+        else if (i != count)
+        {
+            printf("Key must not contain repeated characters.\n");
+            return 1; 
+        }
+        //printf("%c %c %i %i\n", low, key[i], count, i);
+        for (int j = 0; j < len; j++)
+        {
+            if (key[j] == upp || key [j] == low)
+            {
+                count++;
+            }
+        }
+        upp++, low++;
+        //upp = 'A', low = 'a';
+        
+        
     }
 
     // Check if the CLA is an integer
