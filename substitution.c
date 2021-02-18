@@ -30,17 +30,18 @@ int main(int argc, string argv[])
     int count = 0;
     for (int i = 0; i < len; i++)
     {
-        if (!(key[i] >= 'a' && key[i] <= 'z' ) && !(key[i] >= 'A' && key[i] <= 'Z'))
+        // Check for alpabetic characters by checking for any characters outside the alphabet
+        if (!(key[i] >= 'a' && key[i] <= 'z') && !(key[i] >= 'A' && key[i] <= 'Z'))
         {
             printf("Key must only contain alphabetic characters.\n");
             return 1;
         }
+        // Check for repeated characters by couting each occurence of a character that should always be equal to i
         else if (i != count)
         {
             printf("Key must not contain repeated characters.\n");
             return 1;
         }
-        //printf("%c %c %i %i\n", low, key[i], count, i);
         for (int j = 0; j < len; j++)
         {
             if (key[j] == upp || key [j] == low)
@@ -61,7 +62,7 @@ int main(int argc, string argv[])
     printf("ciphertext: ");
     for (int k = 0; k < n; k++)
     {
-        if (plain[k] >= 'a' && plain[k] <= 'z')
+        if (plain[k] >= 'a' && plain[k] <= 'z')             // Convert plain lowercase letters only to lowercase cipher
         {
             for (int l = 0; l < len; l++)
             {
@@ -70,11 +71,11 @@ int main(int argc, string argv[])
                     printf("%c", tolower(key[l]));
                 }
             }
-              
+
         }
-        else if (plain[k] >= 'A' && plain[k] <= 'Z')
+        else if (plain[k] >= 'A' && plain[k] <= 'Z')        // Convert plain uppercase letter to uppercase cypher
         {
-                        for (int l = 0; l < len; l++)
+            for (int l = 0; l < len; l++)
             {
                 if (plain[k] == uppAr[l])
                 {
@@ -82,12 +83,11 @@ int main(int argc, string argv[])
                 }
             }
         }
-        else 
+        else
         {
             printf("%c", plain[k]);
         }
     }
     printf("\n");
-
     return 0;
 }
