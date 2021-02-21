@@ -1,6 +1,5 @@
 # Get input from user between 1 and 8
 
-
 while True:
     try:
         height = int(input("Height: "))
@@ -11,14 +10,12 @@ while True:
     except:
         print("Only numbers between 1 and 8 allowed")
 
-
-
 for i in range(0, height, 1):
     for j in range(1,  height - i, 1):  # Print first space
-        print(" ", end ="")
+        print(" ", end="")
     for k in range(0, i + 1, 1):        # Print fist hash
-        print("#", end ="")
-    print("  ", end ="")                # Print 2 middle spaces
+        print("#", end="")
+    print("  ", end="")                # Print 2 middle spaces
     for j in range(0, i + 1, 1):
-        print("#", end ="")             # print final hash
-    print("\n", end ="")
+        print("#", end="")             # print final hash
+    print("\n", end="")
