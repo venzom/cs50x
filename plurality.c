@@ -85,27 +85,26 @@ void print_winner(void)
     // Sort order of votes to largest being in the [0] array
     for (int i = 0; i < candidate_count; i++)
     {
-            if (candidates[0].votes < candidates[i].votes)
-                candidates[0] = candidates[i];
-            /*else if (candidates[i].votes == candidates[i+1].votes)
-                printf("%s\n%s\n", candidates[i].name, candidates[i+1].name);
-            else
-                printf("%s\n", candidates[0].name);*/
+        if (candidates[0].votes < candidates[i].votes)
+        {
+            candidates[0] = candidates[i];
+        }
     }
+    
+    // Print each candidat that has the max number of votes
     int vote = candidates[0].votes;
     for (int j = 0; j < candidate_count; j++)
     {
         if (candidates[j].votes == vote)
+        {
             printf("%s\n", candidates[j].name);
+        }
         else
+        {
             break;
+        }
     }
     
-    /*for (int j = 0; j < candidate_count; j++)
-    {
-        if (candidates[j].votes == candidates[j+1].votes)
-            printf("%s\n%s\n", candidates[j].name, candidates[j+1].name);
-    }*/
     return;
 }
 
