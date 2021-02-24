@@ -173,19 +173,18 @@ void tabulate(void)
 {
     // If candidate is eliminated, shift preference
     // Update vote count for each cadidate by using preferences[i][0]
-
-
     for (int i = 0; i < voter_count; i++)
     {
         for (int j = 0; j < candidate_count; j++)
         {
-            if (candidates[preferences[i][j]].eliminated == false)
+            if (j == preferences[i][0] && candidates[j].eliminated == false)
             {
-                candidates[preferences[i][j]].votes++;
+                candidates[j].votes++;
                 break;
             }
         }
     }
+    return;
 
     // printf("count %i\n", process);
     return;
