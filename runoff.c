@@ -179,9 +179,10 @@ void tabulate(void)
         // {
             
         // }
+        int l = candidate_count;
         for (int j = 0; j < candidate_count; j++)
         {
-            int l = j;
+            
             while (candidates[l].eliminated == true)
             {
                 l++;
