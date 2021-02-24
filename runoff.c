@@ -171,25 +171,34 @@ bool vote(int voter, int rank, string name)
 // Tabulate votes for non-eliminated candidates
 void tabulate(void)
 {
+    // If candidate is eliminated, shift preference 
     // Update vote count for each cadidate by using preferences[i][0]
-    process++;
     for (int i = 0; i < voter_count; i++)
     {
+        for (int k =0; k < candidate_count; k++)
+        {
+            if (candidates[k].eliminated == true)
+            {
+                preferences[i][0] = k + 1;
+            }
+        }
         for (int j = 0; j < candidate_count; j++)
         {
             if (j == preferences[i][0] && candidates[j].eliminated == false)
             {
                 candidates[j].votes++;
             }
-            else if (candidates[j].eliminated == true)
-            {
-                if (j == preferences[i][process])
-                {
-                    candidates[process].votes++;
-                }
-            }
+            // else if (candidates[j].eliminated == true)
+            // {
+            //     if (j == preferences[i][process])
+            //     {
+            //         candidates[process].votes++;
+            //     }
+            // }
         }
     }
+    
+    // printf("count %i\n", process);
     return;
 }
 
