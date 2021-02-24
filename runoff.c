@@ -173,40 +173,41 @@ void tabulate(void)
 {
     // If candidate is eliminated, shift preference 
     // Update vote count for each cadidate by using preferences[i][0]
-    for (int k =0; k < candidate_count; k++)
+    
+    // for (int k =0; k < candidate_count; k++)
+    //     {
+    //         if (candidates[k].eliminated == false)
+    //         {
+    //             candidates[k].votes++;
+    //         }
+    //         for (int l = 0; l < voter_count; l++)
+    //         {
+    //             if (k == preferences[l][0])
+    //             {
+    //                 candidates[k].votes++;
+    //             }
+    //         }
+    //     }
+    for (int i = 0; i < voter_count; i++)
+    {
+        for (int j = 0; j < candidate_count; j++)
         {
-            //if (candidates[k].eliminated == false){
-            for (int l = 0; l < voter_count; l++)
+            if (candidates[preferences[i][0]].eliminated == false)
             {
-                if (k == preferences[l][0])
-                {
-                    candidates[k].votes++;
-                }
-            }//}
+                candidates[preferences[i][0]].votes++;
+            }
         }
     
-    
+    }
     // for (int i = 0; i < voter_count; i++)
     // {
-    //     int l = candidate_count;
     //     for (int j = 0; j < candidate_count; j++)
     //     {
-            
-    //         while (candidates[l].eliminated == true)
+    //         if (candidate[j].eliminated == false)
     //         {
-    //             l++;
-    //             preferences[i][0] = preferences[i][l];
-    //         }
     //         if (j == preferences[i][0])
     //         {
     //             candidates[j].votes++;
-    //         }
-    //         else if (candidates[j].eliminated == true)
-    //         {
-    //             if (j == preferences[i][process])
-    //             {
-    //                 candidates[process].votes++;
-    //             }
     //         }
     //     }
     // }
