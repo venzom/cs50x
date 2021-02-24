@@ -173,7 +173,7 @@ void tabulate(void)
     {
         for (int j = 0; j < candidate_count; j++)
         {
-            if (j == preferences[i][j] && candidates[j].eliminated == false)
+            if (j == preferences[i][0] && candidates[j].eliminated == false)
             {
                 candidates[j].votes++;
             }
@@ -187,11 +187,11 @@ bool print_winner(void)
 {
     // Calculate the minimum number of votes required to win
     // and print winner if there is one
-    int win = (voter_count + 1) / 2;
+    int win = voter_count / 2;
     //printf("Win %i", win);
     for (int i = 0; i < candidate_count; i++)
     {
-        if (candidates[i].votes >= win)
+        if (candidates[i].votes > win)
         {
             printf("%s\n", candidates[i].name);
             return true;
