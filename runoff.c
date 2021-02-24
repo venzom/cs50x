@@ -21,6 +21,9 @@ candidate;
 // Array of candidates
 candidate candidates[MAX_CANDIDATES];
 
+// Count the number of rounds
+int process = -1;
+
 // Numbers of voters and candidates
 int voter_count;
 int candidate_count;
@@ -169,13 +172,21 @@ bool vote(int voter, int rank, string name)
 void tabulate(void)
 {
     // Update vote count for each cadidate by using preferences[i][0]
+    process++;
     for (int i = 0; i < voter_count; i++)
     {
         for (int j = 0; j < candidate_count; j++)
         {
-            if (j == preferences[i][j] && candidates[j].eliminated == false)
+            if (j == preferences[i][0] && candidates[j].eliminated == false)
             {
                 candidates[j].votes++;
+            }
+            else if (candidates[j].eliminated == true)
+            {
+                if (j == preferences[i][process])
+                {
+                    candidates[process].votes++;
+                }
             }
         }
     }
