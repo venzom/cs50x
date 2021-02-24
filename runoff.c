@@ -175,16 +175,17 @@ void tabulate(void)
     // Update vote count for each cadidate by using preferences[i][0]
     for (int i = 0; i < voter_count; i++)
     {
-        for (int k =0; k < candidate_count; k++)
-        {
-            if (candidates[k].eliminated == true)
-            {
-                preferences[i][0] = k + 1;
-            }
-        }
+        // for (int k =0; k < candidate_count; k++)
+        // {
+            
+        // }
         for (int j = 0; j < candidate_count; j++)
         {
-            if (j == preferences[i][0] && candidates[j].eliminated == false)
+            if (candidates[j].eliminated == true)
+            {
+                preferences[i][0] = j + 1;
+            }
+            if (j == preferences[i][0])
             {
                 candidates[j].votes++;
             }
