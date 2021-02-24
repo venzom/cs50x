@@ -87,7 +87,7 @@ int main(int argc, string argv[])
         printf("\n");
     }
 
-    // Test to check for vote update
+    // Tests to check different if functions are operating
     /*tabulate();
     for (int l = 0; l < candidate_count; l++)
         {
@@ -171,10 +171,10 @@ bool vote(int voter, int rank, string name)
 // Tabulate votes for non-eliminated candidates
 void tabulate(void)
 {
-    // If candidate is eliminated, shift preference 
+    // If candidate is eliminated, shift preference
     // Update vote count for each cadidate by using preferences[i][0]
-    
-    
+
+
     for (int i = 0; i < voter_count; i++)
     {
         for (int j = 0; j < candidate_count; j++)
@@ -186,7 +186,7 @@ void tabulate(void)
             }
         }
     }
-    
+
     // printf("count %i\n", process);
     return;
 }
@@ -215,12 +215,12 @@ int find_min(void)
     // Arrange votes from smallest[0] to largest and return smallest(min)
     int min = 0;
     for (int i = 0; i < candidate_count; i++)
+    {
+        if (candidates[0].votes > candidates[i].votes && candidates[i].eliminated == false)
         {
-            if (candidates[0].votes > candidates[i].votes && candidates[i].eliminated == false)
-            {
-                candidates[0] = candidates[i];
-            }
+            candidates[0] = candidates[i];
         }
+    }
     min = candidates[0].votes;
     //printf("Min %i\n", min);
     return min;
@@ -260,7 +260,7 @@ bool is_tie(int min)
 // Eliminate the candidate (or candidates) in last place
 void eliminate(int min)
 {
-    // 
+    //
     for (int i = 0; i < candidate_count; i++)
     {
         if (candidates[i].votes == min)
