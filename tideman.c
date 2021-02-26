@@ -89,14 +89,14 @@ int main(int argc, string argv[])
 
         printf("\n");
     }
-    /*for (int k = 0; k < candidate_count; k++)
+    for (int k = 0; k < candidate_count; k++)
     {
         for (int l = 0; l < candidate_count; l++)
         {
             printf("%i ", preferences[k][l]);
         }
         printf("\n");
-    }*/
+    }
     add_pairs();
     sort_pairs();
     lock_pairs();
@@ -112,7 +112,7 @@ bool vote(int rank, string name, int ranks[])
     {
         if (strcmp(candidates[i], name) == 0)
         {
-            ranks[i] = rank;
+            ranks[rank] = i;
             return true;
         }
     }
@@ -126,7 +126,7 @@ void record_preferences(int ranks[])
     // Create array of preferences for each candidate 
     for (int i = 0; i < candidate_count; i++)
     {
-        for (int j = 0; j < candidate_count; j++)
+        for (int j = i + 1; j < candidate_count; j++)
         {
             if (ranks[i] < ranks[j])
             {
