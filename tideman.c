@@ -169,7 +169,7 @@ void add_pairs(void)
 // Sort pairs in decreasing order by strength of victory
 void sort_pairs(void)
 {
-    // Sort pairs using selection sort by comparing vote count of winners
+    // Sort pairs using bubble sort by comparing vote count of winners
     for (int i = pair_count - 1; i >= 0; i--)
     {
         
@@ -178,8 +178,8 @@ void sort_pairs(void)
             if (preferences[pairs[j].winner][pairs[j].loser] < preferences[pairs[j + 1].winner][pairs[j + 1].loser])
             {
                 pair sort = pairs[j];
-                pairs[j] = pairs[0];
-                pairs[0] = sort;
+                pairs[j] = pairs[j + 1];
+                pairs[j + 1] = sort;
             }
         }
     }
