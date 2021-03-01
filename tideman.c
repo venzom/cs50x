@@ -171,18 +171,23 @@ void add_pairs(void)
 void sort_pairs(void)
 {
     // Sort pairs using selection sort by comparing vote count of winners
-    for (int i = pair_count - 1; i >= 0; i--)
+    for (int j = 0; j < pair_count; j++)
     {
-        
-        for (int j = 0; j < pair_count; j++)
-        {
-            if (preferences[pairs[j].winner][pairs[j].loser] > preferences[pairs[j + 1].winner][pairs[j + 1].loser])
+        if (preferences[pairs[j].winner][pairs[j].loser] < preferences[pairs[j + 1].winner][pairs[j + 1].loser])
             {
-                sort[j] = pairs[j];
-                pairs[j] = pairs[0];
-                pairs[0] = sort[j];
+                // sort[j] = pairs[j];
+                // pairs[j] = pairs[0];
+                pairs[0] = pairs[j];
             }
-        }
+        // for (int j = 0; j < pair_count; j++)
+        // {
+        //     if (preferences[pairs[j].winner][pairs[j].loser] < preferences[pairs[j + 1].winner][pairs[j + 1].loser])
+        //     {
+        //         sort[j] = pairs[j];
+        //         pairs[j] = pairs[0];
+        //         pairs[0] = sort[j];
+        //     }
+        // }
     }
     return;
 }
