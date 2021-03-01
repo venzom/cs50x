@@ -22,6 +22,7 @@ pair;
 // Array of candidates
 string candidates[MAX];
 pair pairs[MAX * (MAX - 1) / 2];
+pair sort[MAX * (MAX - 1) / 2];
 
 int pair_count;
 int candidate_count;
@@ -89,16 +90,21 @@ int main(int argc, string argv[])
 
         printf("\n");
     }
-//   for (int k = 0; k < candidate_count; k++)
-//     {
-//         for (int l = 0; l < candidate_count; l++)
-//         {
-//             printf("%i ", preferences[k][l]);
-//         }
-//         printf("\n");
-//     }
+    for (int k = 0; k < candidate_count; k++)
+    {
+        for (int l = 0; l < candidate_count; l++)
+        {
+            printf("%i ", preferences[k][l]);
+        }
+        printf("\n");
+    }
     add_pairs();
+    for (int k = 0; k < pair_count; k++)
+    {
+        printf("Winner: %i Loser: %i\n", pairs[k].winner, pairs[k].loser);
+    }
     sort_pairs();
+    printf("Winner: %i \n", pairs[0].winner);
     lock_pairs();
     print_winner();
     return 0;
@@ -123,7 +129,7 @@ bool vote(int rank, string name, int ranks[])
 // Update preferences given one voter's ranks
 void record_preferences(int ranks[])
 {
-    // Create array of preferences for each candidate 
+    // Create array of preferences for each candidate
     for (int i = 0; i < candidate_count; i++)
     {
         for (int j = i + 1; j < candidate_count; j++)
@@ -137,7 +143,8 @@ void record_preferences(int ranks[])
 // Record pairs of candidates where one is preferred over the other
 void add_pairs(void)
 {
-    // 
+    // Compare each candidate to other at [i][i] or [j][j] find select
+    // the largest preference.
     for (int i = 0; i < candidate_count; i++)
     {
         for (int j = i + 1; j < candidate_count; j++)
@@ -156,7 +163,7 @@ void add_pairs(void)
             }
         }
     }
-        
+
     return;
 }
 
@@ -164,6 +171,19 @@ void add_pairs(void)
 void sort_pairs(void)
 {
     // TODO
+    for (int i = pair_count - 1; i >= 0; i--)
+    {
+        
+        for (int j = 0; j < pair_count; j++)
+        {
+            if (preferences[pairs[j].winner][pairs[j].loser] > preferences[pairs[j + 1].winner][pairs[j + 1].loser])
+            {
+                sort[j] = pairs[j];
+                pairs[j] = pairs[0];
+                pairs[0] = sort[j];
+            }
+        }
+    }
     return;
 }
 
