@@ -22,7 +22,7 @@ pair;
 // Array of candidates
 string candidates[MAX];
 pair pairs[MAX * (MAX - 1) / 2];
-pair sort[MAX * (MAX - 1) / 2];
+//pair sort[MAX * (MAX - 1) / 2];
 
 int pair_count;
 int candidate_count;
@@ -175,9 +175,9 @@ void sort_pairs(void)
     {
         if (preferences[pairs[j].winner][pairs[j].loser] < preferences[pairs[j + 1].winner][pairs[j + 1].loser])
             {
-                // sort[j] = pairs[j];
-                // pairs[j] = pairs[0];
-                pairs[0] = pairs[j];
+                pair sort = pairs[j];
+                pairs[j] = pairs[0];
+                pairs[0] = sort;
             }
         // for (int j = 0; j < pair_count; j++)
         // {
