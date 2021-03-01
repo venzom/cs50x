@@ -99,12 +99,12 @@ int main(int argc, string argv[])
         printf("\n");
     }
     add_pairs();
-    for (int k = 0; k < pair_count; k++)
-    {
-        printf("Winner: %i Loser: %i\n", pairs[k].winner, pairs[k].loser);
-    }
+    // for (int k = 0; k < pair_count; k++)
+    // {
+    //     printf("Winner: %i Loser: %i\n", pairs[k].winner, pairs[k].loser);
+    // }
     sort_pairs();
-    printf("Winner: %i \n", pairs[0].winner);
+    // printf("Winner: %i \n", pairs[0].winner);
     lock_pairs();
     print_winner();
     return 0;
@@ -170,7 +170,7 @@ void add_pairs(void)
 // Sort pairs in decreasing order by strength of victory
 void sort_pairs(void)
 {
-    // TODO
+    // Sort pairs using selection sort by comparing vote count of winners
     for (int i = pair_count - 1; i >= 0; i--)
     {
         
