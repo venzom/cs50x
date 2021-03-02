@@ -211,7 +211,7 @@ void lock_pairs(void)
             bool check =  false;
             for (int j = 0; j < pair_count; j++)
             {
-                if (locked[pairs[i].loser][j] == false)
+                if (locked[pairs[i].loser][j] == true)
                 {
                     check = true;
                     break;
