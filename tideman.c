@@ -90,35 +90,35 @@ int main(int argc, string argv[])
 
         printf("\n");
     }
-    for (int k = 0; k < candidate_count; k++)
-    {
-        for (int l = 0; l < candidate_count; l++)
-        {
-            printf("%i ", preferences[k][l]);
-        }
-        printf("\n");
-    }
+    // for (int k = 0; k < candidate_count; k++)
+    // {
+    //     for (int l = 0; l < candidate_count; l++)
+    //     {
+    //         printf("%i ", preferences[k][l]);
+    //     }
+    //     printf("\n");
+    // }
     add_pairs();
-    for (int k = 0; k < pair_count; k++)
-    {
-        printf("Winner: %i Loser: %i\n", pairs[k].winner, pairs[k].loser);
-    }
+    // for (int k = 0; k < pair_count; k++)
+    // {
+    //     printf("Winner: %i Loser: %i\n", pairs[k].winner, pairs[k].loser);
+    // }
     sort_pairs();
-    printf("-----\n");
-    for (int k = 0; k < pair_count; k++)
-    {
-        printf("Winner: %i Loser: %i\n", pairs[k].winner, pairs[k].loser);
-    }
-    printf("Winner: %i \n", pairs[0].winner);
+    // printf("-----\n");
+    // for (int k = 0; k < pair_count; k++)
+    // {
+    //     printf("Winner: %i Loser: %i\n", pairs[k].winner, pairs[k].loser);
+    // }
+    // printf("Winner: %i \n", pairs[0].winner);
     lock_pairs();
-    for (int k = 0; k < candidate_count; k++)
-    {
-        for (int l = 0; l < candidate_count; l++)
-        {
-            printf("%d ", locked[k][l]);
-        }
-        printf("\n");
-    }
+    // for (int k = 0; k < candidate_count; k++)
+    // {
+    //     for (int l = 0; l < candidate_count; l++)
+    //     {
+    //         printf("%d ", locked[k][l]);
+    //     }
+    //     printf("\n");
+    // }
     print_winner();
     return 0;
 }
@@ -201,15 +201,17 @@ void sort_pairs(void)
 }
 
 // Lock pairs into the candidate graph in order, without creating cycles
+// This section I had trouble with and this is not my solution at the bottom,
+// I found resources online to assist. 
 void lock_pairs(void)
 {
     // Lock first pair in sinc it is the largest and cannot be unlocked
-    locked[pairs[0].winner][pairs[0].loser] = true;
+    //locked[pairs[0].winner][pairs[0].loser] = true;
     
-    // check if arrow pointing if not point arrow to loser.
-    for (int i = 1; i < pair_count; i++)
+    // check if arrow pointing away, if not point arrow to loser.
+    for (int i = 0; i < pair_count; i++)
         {
-            if (check_arrow(pairs[i].winner, pairs[i].loser) == false)
+            if (!check_arrow(pairs[i].winner, pairs[i].loser))
             {
                 locked[pairs[i].winner][pairs[i].loser] = true;
             }
@@ -217,10 +219,26 @@ void lock_pairs(void)
     return;
 }
 
-// Print the winner of the election
+// Print the winner of the election -- 
 void print_winner(void)
 {
-    // TODO
+    int false_count = 0;
+    // Print the first 
+    for (int i = 0; i < candidate_count; i++)
+    {
+        for (int j = 0; j < candidate_count; j++)
+        {
+            if (locked[j][i] == false)
+            {
+                false_count++;
+                if (false_count == candidate_count)
+                {
+                    printf("%s\n", candidates[i]);
+                }
+            }
+            
+        }
+    }
     return;
 }
 
@@ -231,7 +249,7 @@ bool check_arrow(int winner, int loser)
     {
         return true;
     }
-    for (int i = 0; i < pair_count; i++)
+    for (int i = 0; i < candidate_count; i++)
     {
         if (locked[loser][i] == true)
         {
