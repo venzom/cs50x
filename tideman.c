@@ -203,8 +203,8 @@ void sort_pairs(void)
 void lock_pairs(void)
 {
     // Populate i x j array with true of winner, start with populating first pair
-    //if(pair_count > 0)
-    locked[pairs[0].winner][pairs[0].loser] = true;
+    if(pair_count > 0)
+        locked[pairs[0].winner][pairs[0].loser] = true;
     // locked[pairs[1].winner][pairs[1].loser] = true;
     for (int i = 0; i < pair_count; i++)
         {
