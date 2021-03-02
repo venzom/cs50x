@@ -33,6 +33,7 @@ void add_pairs(void);
 void sort_pairs(void);
 void lock_pairs(void);
 void print_winner(void);
+bool check_arrow(int winner, int loser);
 
 int main(int argc, string argv[])
 {
@@ -185,7 +186,7 @@ void sort_pairs(void)
     // Sort pairs using bubble sort by comparing vote count of winners
     for (int i = pair_count - 1; i >= 0; i--)
     {
-        
+
         for (int j = 0; j < pair_count; j++)
         {
             if (preferences[pairs[j].winner][pairs[j].loser] < preferences[pairs[j + 1].winner][pairs[j + 1].loser])
@@ -207,24 +208,11 @@ void lock_pairs(void)
     // locked[pairs[1].winner][pairs[1].loser] = true;
     for (int i = 0; i < pair_count; i++)
         {
-            for (int j = 0; j < pair_count; j++)
+            if (check_arrow(pairs[i].winner, pairs[i].loser) == false)
             {
-                    if (locked[pairs[i].winner][pairs[j].loser] == false)
-                    {
-                        locked[pairs[i].winner][pairs[i].loser] = true;
-                    }
+                locked[pairs[i].winner][pairs[i].loser] = true;
             }
         }
-    for (int i = 0; i < pair_count; i++)
-        {
-            for (int j = 0; j < pair_count; j++)
-            {
-                    if (pairs[i].winner == pairs[i].loser)
-                    {
-                        locked[pairs[j].winner][pairs[j].loser] = false;
-                    }
-            }
-        }    
     return;
 }
 
@@ -235,3 +223,22 @@ void print_winner(void)
     return;
 }
 
+
+bool check_arrow(int winner, int loser)
+{
+    if (winner == loser)
+    {
+        return true;
+    }
+    for (int i = 0; i < pair_count; i++)
+    {
+        if (locked[loser][i] == true)
+        {
+            if (check_arrow(winner, i))
+            {
+                return true;
+            }
+        }
+    }
+    return false;
+}
