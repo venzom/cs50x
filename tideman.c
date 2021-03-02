@@ -203,10 +203,11 @@ void sort_pairs(void)
 // Lock pairs into the candidate graph in order, without creating cycles
 void lock_pairs(void)
 {
-    // Populate i x j array with true of winner
+    // Lock first pair in sinc it is the largest and cannot be unlocked
     locked[pairs[0].winner][pairs[0].loser] = true;
-    // locked[pairs[1].winner][pairs[1].loser] = true;
-    for (int i = 0; i < pair_count; i++)
+    
+    // check if arrow pointing if not point arrow to loser.
+    for (int i = 1; i < pair_count; i++)
         {
             if (check_arrow(pairs[i].winner, pairs[i].loser) == false)
             {
