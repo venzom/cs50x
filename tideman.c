@@ -209,7 +209,7 @@ void lock_pairs(void)
         {
             for (int j = 0; j < pair_count; j++)
             {
-                if (locked[pairs[i].loser][pairs[j].winner] == false && (locked[pairs[i].loser][pairs[i].winner] == i || locked[pairs[i].loser][pairs[i].winner] == j))
+                if (locked[pairs[i].loser][j] == false && (locked[pairs[i].loser][pairs[i].winner] == i || locked[pairs[i].loser][pairs[i].winner] == j))
                 {
                     locked[pairs[i].winner][pairs[i].loser] = true;
                 }
