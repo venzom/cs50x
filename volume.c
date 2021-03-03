@@ -39,9 +39,10 @@ int main(int argc, char *argv[])
     fwrite(header, sizeof(uint8_t), HEADER_SIZE, output);
     
     
-    // TODO: Read samples from input file and write updated data to output file
+    // Read samples from input file and write updated data to output file
+    // Data is multiplied by "factor" command line argnument
     int16_t buffer;
-    while(fread(&buffer, sizeof(int16_t), 1, input) != 0)
+    while (fread(&buffer, sizeof(int16_t), 1, input) != 0)
     {    
         buffer = buffer * factor;
         fwrite(&buffer, sizeof(int16_t), 1, output);
