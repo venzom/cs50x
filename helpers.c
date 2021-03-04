@@ -75,7 +75,7 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
     
     for (int i = 0; i <= height; i++)
     {
-        int w = width;
+        int w = width - 1;
         for (int j = 0; j < width; j++)
         {
             // Read RGB data from each pixel
