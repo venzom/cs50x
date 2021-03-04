@@ -12,12 +12,12 @@ void grayscale(int height, int width, RGBTRIPLE image[height][width])
         for (int j = 0; j <= width; j++)
         {
             // Read RGB data from each pixel
-            float r = image[i][j].rgbtRed;
-            float g = image[i][j].rgbtGreen;
-            float b = image[i][j].rgbtBlue;
+            double r = image[i][j].rgbtRed;
+            double g = image[i][j].rgbtGreen;
+            double b = image[i][j].rgbtBlue;
             
             // Get average of each pixel by calculating RGB average
-            int avg = (r + g + b) / 3;
+            double avg = (r + g + b) / 3.0;
             avg = (round(avg));
             
             // Give each RGB the same value of "avg"
