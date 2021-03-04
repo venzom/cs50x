@@ -103,9 +103,9 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
     //double r[width], g[width], b[width];
     float count;
     
-    for (int i = 0; i <= height; i++)
+    for (int i = 0; i < height; i++)
     {
-        for (int j = 0; j <= width; j++)
+        for (int j = 0; j < width; j++)
         {
             count = 0.0;
             float r = 0, g = 0, b = 0;
@@ -113,6 +113,7 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             {
                 for (int l = -1; l < 3; l++)
                 {
+                    // Check if pixels are outside image
                     if (i + k < 0 || i + k >= height)
                     {
                         continue;
