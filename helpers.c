@@ -99,9 +99,16 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
 // Blur image
 void blur(int height, int width, RGBTRIPLE image[height][width])
 {
-    // float count = 0.0;
-    //double r[width], g[width], b[width];
-    // int count;
+    // Create a duplicate of the image
+    RGBTRIPLE dupl[height][width];
+    
+    for (int i = 0; i < height; i++)
+    {
+        for (int j = 0; j < width; j++)
+        {
+            dupl[i][j] = image[i][j];
+        }
+    }
     
     for (int i = 0; i < height; i++)
     {
@@ -116,16 +123,16 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                     // Check if pixels are outside image
                     if (i + k < 0 || i + k >= height)
                     {
-                        continue;
+                        break;
                     }
                     if (j + l < 0 || j + l >= width)
                     {
-                        continue;
+                        break;
                     }
                     count++;
-                    r += image[i + k][j + l].rgbtRed;
-                    g += image[i + k][j + l].rgbtGreen; 
-                    b += image[i + k][j + l].rgbtBlue;
+                    r += dupl[i + k][j + l].rgbtRed;
+                    g += dupl[i + k][j + l].rgbtGreen; 
+                    b += dupl[i + k][j + l].rgbtBlue;
                 }
             }
             image[i][j].rgbtRed = round(r / count);
