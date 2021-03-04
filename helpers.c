@@ -100,15 +100,15 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
 void blur(int height, int width, RGBTRIPLE image[height][width])
 {
     // Create a duplicate of the image
-    // RGBTRIPLE dupl[height][width];
+    RGBTRIPLE dupl[height][width];
     
-    // for (int i = 0; i < height; i++)
-    // {
-    //     for (int j = 0; j < width; j++)
-    //     {
-    //         dupl[i][j] = image[i][j];
-    //     }
-    // }
+    for (int i = 0; i < height; i++)
+    {
+        for (int j = 0; j < width; j++)
+        {
+            dupl[i][j] = image[i][j];
+        }
+    }
     
     for (int i = 0; i < height; i++)
     {
@@ -130,9 +130,9 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                         break;
                     }
                     count++;
-                    r += image[i + k][j + l].rgbtRed;
-                    g += image[i + k][j + l].rgbtGreen; 
-                    b += image[i + k][j + l].rgbtBlue;
+                    r += dupl[i + k][j + l].rgbtRed;
+                    g += dupl[i + k][j + l].rgbtGreen; 
+                    b += dupl[i + k][j + l].rgbtBlue;
                 }
             }
             image[i][j].rgbtRed = round(r / count);
