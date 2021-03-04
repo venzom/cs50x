@@ -123,11 +123,11 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                     // Check if pixels are outside image
                     if (i + k < 0 || i + k >= height)
                     {
-                        break;
+                        continue;
                     }
                     if (j + l < 0 || j + l >= width)
                     {
-                        break;
+                        continue;
                     }
                     count++;
                     r += dupl[i + k][j + l].rgbtRed;
@@ -138,8 +138,6 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             image[i][j].rgbtRed = round(r / count);
             image[i][j].rgbtGreen = round(g / count);
             image[i][j].rgbtBlue = round(b / count);
-            
-            //r[j] = g[j] = b[j] = count = 0.0;
         }
         // for (int k = 0; k <= width; k++)
         // {
