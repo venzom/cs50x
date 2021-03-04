@@ -32,38 +32,38 @@ void grayscale(int height, int width, RGBTRIPLE image[height][width])
 // Convert image to sepia
 void sepia(int height, int width, RGBTRIPLE image[height][width])
 {
-    // float r, g, b;
+    double r, g, b;
     
-    // for (int i = 0; i <= height; i++)
-    // {
-    //     for (int j = 0; j <= width; j++)
-    //     {
-    //         // Calculate each new R, G r B value sepia color
-    //         r = .393 * image[i][j].rgbtRed + .769 * image[i][j].rgbtGreen + .189 * image[i][j].rgbtBlue;
-    //         g = .349 * image[i][j].rgbtRed + .686 * image[i][j].rgbtGreen + .168 * image[i][j].rgbtBlue;
-    //         b = .272 * image[i][j].rgbtRed + .534 * image[i][j].rgbtGreen + .131 * image[i][j].rgbtBlue;
-    //         r = round(r);
-    //         g = round(g);
-    //         b = round(b);
+    for (int i = 0; i <= height; i++)
+    {
+        for (int j = 0; j < width; j++)
+        {
+            // Calculate each new R, G r B value sepia color
+            r = .393 * image[i][j].rgbtRed + .769 * image[i][j].rgbtGreen + .189 * image[i][j].rgbtBlue;
+            g = .349 * image[i][j].rgbtRed + .686 * image[i][j].rgbtGreen + .168 * image[i][j].rgbtBlue;
+            b = .272 * image[i][j].rgbtRed + .534 * image[i][j].rgbtGreen + .131 * image[i][j].rgbtBlue;
+            r = round(r);
+            g = round(g);
+            b = round(b);
             
-    //         if (r < 255)
-    //         {
-    //             r = 255;
-    //         }
-    //         else if (g < 255)
-    //         {
-    //             g = 255;
-    //         }
-    //         else if (b < 255)
-    //         {
-    //             b = 255;
-    //         }
+            if (r > 255)
+            {
+                r = 255;
+            }
+            if (g > 255)
+            {
+                g = 255;
+            }
+            if (b > 255)
+            {
+                b = 255;
+            }
             
-    //         image[i][j].rgbtRed = r;
-    //         image[i][j].rgbtGreen = g;
-    //         image[i][j].rgbtBlue = b;
-    //     }
-    // }
+            image[i][j].rgbtRed = r;
+            image[i][j].rgbtGreen = g;
+            image[i][j].rgbtBlue = b;
+        }
+    }
     return;
 }
 
