@@ -99,98 +99,50 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
 // Blur image
 void blur(int height, int width, RGBTRIPLE image[height][width])
 {
-    int count = 1;
-    double avgR, avgG, avgB;
+    // float count = 0.0;
+    double r[width], g[width], b[width];
+    float count;
     
-    for (int i = 0; i <= height; i++)
+    for (int i = 0; i < height; i++)
     {
-        for (int j = 0; j <=width; j++)
+        for (int j = 0; j < width; j++)
         {
-            // if (i == 0 && j == 0)
-            // {
-            //     avgR = (image[i][j].rgbtRed + image[i][j+1].rgbtRed + image[i+1][j].rgbtRed 
-            //     + image[i+1][j+1].rgbtRed) / 4.0;
-                
-            //     avgG = (image[i][j].rgbtGreen + image[i][j+1].rgbtGreen + image[i+1][j].rgbtGreen 
-            //     + image[i+1][j+1].rgbtGreen) / 4.0;
-                
-            //     avgB = (image[i][j].rgbtBlue + image[i][j+1].rgbtBlue + image[i+1][j].rgbtBlue 
-            //     + image[i+1][j+1].rgbtBlue) / 4.0;
-                
-            //     image[i][j].rgbtRed = round(avgR);
-            //     image[i][j].rgbtGreen = round(avgG);
-            //     image[i][j].rgbtBlue = round(avgB);
-            //     break;
-            // }
-            // if (i == 0 && j == width - 1)
-            // {
-            //     avgR = (image[i][j-1].rgbtRed + image[i][j].rgbtRed + image[i+1][j-1].rgbtRed
-            //     + image[i+1][j].rgbtRed) / 4.0;
-                
-            //     avgG = (image[i][j-1].rgbtGreen + image[i][j].rgbtGreen + image[i+1][j-1].rgbtGreen
-            //     + image[i+1][j].rgbtGreen) / 4.0;
-                
-            //     avgB = (image[i][j-1].rgbtBlue + image[i][j].rgbtBlue + image[i+1][j-1].rgbtBlue
-            //     + image[i+1][j].rgbtBlue) / 4.0;
-                
-            //     image[i][j].rgbtRed = round(avgR);
-            //     image[i][j].rgbtGreen = round(avgG);
-            //     image[i][j].rgbtBlue = round(avgB);
-            //     break;
-            // }
-            // if (i == width - 1 && j == width - 1)
-            // {
-            //     avgR = (image[i-1][j-1].rgbtRed + image[i-1][j].rgbtRed + image[i][j-1].rgbtRed
-            //     + image[i][j].rgbtRed) / 4.0;
-                
-            //     avgG = (image[i-1][j-1].rgbtGreen + image[i-1][j].rgbtGreen + image[i][j-1].rgbtGreen
-            //     + image[i][j].rgbtGreen) / 4.0;
-                
-            //     avgB = (image[i-1][j-1].rgbtBlue + image[i-1][j].rgbtBlue + image[i][j-1].rgbtBlue
-            //     + image[i][j].rgbtBlue) / 4.0;
-                
-            //     image[i][j].rgbtRed = round(avgR);
-            //     image[i][j].rgbtGreen = round(avgG);
-            //     image[i][j].rgbtBlue = round(avgB);
-            //     break;
-            // }
-            // if (i == width - 1 && j == 0)
-            // {
-            //     avgR = (image[i-1][j].rgbtRed + image[i-1][j+1].rgbtRed + image[i][j].rgbtRed
-            //     + image[i][j+1].rgbtRed) / 4.0;
-                
-            //     avgG = (image[i-1][j].rgbtGreen + image[i-1][j+1].rgbtGreen + image[i][j].rgbtGreen
-            //     + image[i][j+1].rgbtGreen) / 4.0;
-                
-            //     avgB = (image[i-1][j].rgbtBlue + image[i-1][j+1].rgbtBlue + image[i][j].rgbtBlue
-            //     + image[i][j+1].rgbtBlue) / 4.0;
-                
-            //     image[i][j].rgbtRed = round(avgR);
-            //     image[i][j].rgbtGreen = round(avgG);
-            //     image[i][j].rgbtBlue = round(avgB);
-            //     break;
-            // }
-            if (i > 0 && j > 0 && i < height - 1 && j < width - 1)
-            {
-                avgR = (image[i-1][j-1].rgbtRed + image[i-1][j].rgbtRed + image[i-1][j+1].rgbtRed
-                + image[i][j-1].rgbtRed + image[i][j].rgbtRed + image[i][j+1].rgbtRed
-                + image[i+1][j-1].rgbtRed+ image[i+1][j].rgbtRed+ image[i+1][j+1].rgbtRed) / 9.0;
-                
-                avgG = (image[i-1][j-1].rgbtGreen + image[i-1][j].rgbtGreen + image[i-1][j+1].rgbtGreen
-                + image[i][j-1].rgbtGreen + image[i][j].rgbtGreen + image[i][j+1].rgbtGreen
-                + image[i+1][j-1].rgbtGreen+ image[i+1][j].rgbtGreen+ image[i+1][j+1].rgbtGreen) / 9.0;
-                
-                avgB = (image[i-1][j-1].rgbtBlue + image[i-1][j].rgbtBlue + image[i-1][j+1].rgbtBlue
-                + image[i][j-1].rgbtBlue + image[i][j].rgbtBlue + image[i][j+1].rgbtBlue
-                + image[i+1][j-1].rgbtBlue+ image[i+1][j].rgbtBlue+ image[i+1][j+1].rgbtBlue) / 9.0;
-                
-                image[i][j].rgbtRed = round(avgR);
-                image[i][j].rgbtGreen = round(avgG);
-                image[i][j].rgbtBlue = round(avgB);
-                break;
-            }
+            count = 0.0;
             
+            for (int k = -1; k < 3; k++)
+            {
+                for (int l = -1; l < 3; l++)
+                {
+                    if (i + k < 0 || i + k >= height)
+                    {
+                        continue;
+                    }
+                    if (j + l < 0 || j + l >= width)
+                    {
+                        continue;
+                    }
+                    count++;
+                    r[j] += image[i + k][j + l].rgbtRed;
+                    g[j] += image[i + k][j + l].rgbtGreen; 
+                    b[j] += image[i + k][j + l].rgbtBlue;
+                }
+            }
+            image[i][j].rgbtRed = round(r[j] / count);
+            image[i][j].rgbtGreen = round(g[j] / count);
+            image[i][j].rgbtBlue = round(b[j] / count);
+            
+            r[j] = g[j] = b[j] = count = 0.0;
         }
+        // for (int k = 0; k <= width; k++)
+        // {
+        //     image[i][k].rgbtRed = round(r[k] / count);
+        //     image[i][k].rgbtGreen = round(g[k] / count);
+        //     image[i][k].rgbtBlue = round(b[k] / count);
+            
+        //     r[k] = g[k] = b[k] = count = 0.0;
+            
+        // }
+        
     }
     return;
 }
