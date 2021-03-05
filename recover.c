@@ -2,13 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define BUFFER_SIZE 512
+// Create size of Byte
 typedef uint8_t BYTE;
-// void check(FILE card);
-
-BYTE buffer[512];
-char sBuffer[8];
-int count = 000;
 
 int main(int argc, char *argv[])
 {
@@ -28,12 +23,11 @@ int main(int argc, char *argv[])
     }
 
     // Read file in steps of 512 bytes at a time
+    BYTE buffer[512];
+    char sBuffer[8];
+    int count = 000;    
 
-    //char *name;
-
-    
-
-
+    // Read file 512 bytes at a time
     while (fread(&buffer, sizeof(BYTE), 512, card) != 0)
     {
         
