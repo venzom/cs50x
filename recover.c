@@ -45,11 +45,14 @@ int main(int argc, char *argv[])
             sprintf(sBuffer, "%003i.jpg", count);
             FILE *name = fopen(sBuffer, "w");
             // fwrite(&buffer, sizeof(BYTE), 512, name);
-            fwrite(&buffer, sizeof(BYTE), 512, name);
             do 
             {    
-                fread(&buffer, sizeof(BYTE), 512, card);
                 fwrite(&buffer, sizeof(BYTE), 512, name);
+                fread(&buffer, sizeof(BYTE), 512, card);
+                if (feof(card))
+            {
+                break;
+            }
             }   
             while (!((buffer[0] == 0xff && buffer[1] == 0xd8 && buffer[2] == 0xff) 
                 && (buffer[3] >= 0xe0 && buffer[3] <= 0xef)));
@@ -57,6 +60,7 @@ int main(int argc, char *argv[])
             fclose(name);
             //check(*card);
             count++;
+            
         }
 
     }
