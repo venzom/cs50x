@@ -171,16 +171,16 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
                     gx += (dupl[i + k][j + l].rgbtGreen * (Gx[k + 1][l + 1]));
                     bx += (dupl[i + k][j + l].rgbtBlue * (Gx[k + 1][l + 1]));
                     
-                    ry += (dupl[i + k][j + l].rgbtRed * (Gx[k + 1][l + 1]));
-                    gy += (dupl[i + k][j + l].rgbtGreen * (Gx[k + 1][l + 1]));
-                    by += (dupl[i + k][j + l].rgbtBlue * (Gx[k + 1][l + 1]));
+                    ry += (dupl[i + k][j + l].rgbtRed * (Gx[j + 1][l + 1]));
+                    gy += (dupl[i + k][j + l].rgbtGreen * (Gx[j + 1][l + 1]));
+                    by += (dupl[i + k][j + l].rgbtBlue * (Gx[j + 1][l + 1]));
                 }
             }
             
             // Calculate each color as the square root of each rx and ry
-            r = sqrt((rx * rx) + (ry * ry));
-            g = sqrt((gx * gx) + (gy * gy));
-            b = sqrt((bx * bx) + (by * by));
+            r = round(sqrt((rx * rx) + (ry * ry)));
+            g = round(sqrt((gx * gx) + (gy * gy)));
+            b = round(sqrt((bx * bx) + (by * by)));
             
             // Cap each color at 255
             if (r > 255)
@@ -197,9 +197,9 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
             }
             
             // Round number and add replace in image
-            image[i][j].rgbtRed = round(r);
-            image[i][j].rgbtGreen = round(g);
-            image[i][j].rgbtBlue = round(b);
+            image[i][j].rgbtRed = r;
+            image[i][j].rgbtGreen = g;
+            image[i][j].rgbtBlue = b;
         }
     }
     
