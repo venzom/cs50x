@@ -142,10 +142,8 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
     {
         for (int j = 0; j < width; j++)
         {
-            int rx, gx, bx, ry, gy, by;  
+            float rx, gx, bx, ry, gy, by;  
             rx = gx = bx = ry = gy = by = 0;
-            float r, g, b;
-            r = g = b = 0;
             
             // Loop through each surrounding pixel
             // If surrounding pixel is outside the image, assign black to it
@@ -171,13 +169,14 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
                     gx += (dupl[i + k][j + l].rgbtGreen * (Gx[k + 1][l + 1]));
                     bx += (dupl[i + k][j + l].rgbtBlue * (Gx[k + 1][l + 1]));
                     
-                    ry += (dupl[i + k][j + l].rgbtRed * (Gx[j + 1][l + 1]));
-                    gy += (dupl[i + k][j + l].rgbtGreen * (Gx[j + 1][l + 1]));
-                    by += (dupl[i + k][j + l].rgbtBlue * (Gx[j + 1][l + 1]));
+                    ry += (dupl[i + k][j + l].rgbtRed * (Gy[k + 1][l + 1]));
+                    gy += (dupl[i + k][j + l].rgbtGreen * (Gy[k + 1][l + 1]));
+                    by += (dupl[i + k][j + l].rgbtBlue * (Gy[k + 1][l + 1]));
                 }
             }
             
             // Calculate each color as the square root of each rx and ry
+            int r, g, b;
             r = round(sqrt((rx * rx) + (ry * ry)));
             g = round(sqrt((gx * gx) + (gy * gy)));
             b = round(sqrt((bx * bx) + (by * by)));
