@@ -177,9 +177,9 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
             
             // Calculate each color as the square root of each rx and ry
             int r, g, b;
-            r = round(sqrt((rx * rx) + (ry * ry)));
-            g = round(sqrt((gx * gx) + (gy * gy)));
-            b = round(sqrt((bx * bx) + (by * by)));
+            r = sqrt((rx * rx) + (ry * ry));
+            g = sqrt((gx * gx) + (gy * gy));
+            b = sqrt((bx * bx) + (by * by));
             
             // Cap each color at 255
             if (r > 255)
