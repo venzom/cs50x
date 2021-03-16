@@ -23,8 +23,8 @@ def main():
     
     # Look for each STR from database in sequence and count each occurance
     strCount = (count_STRs(sequence, strs))
-    print(strs[1:])
-    print(strCount)
+    # print(strs[1:])
+    # print(strCount)
     # Print match or no match
     print(count_matches(names, strCount))
     
