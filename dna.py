@@ -38,9 +38,9 @@ def count_STRs(sequence, strs):
             l = len(strs[i])                # lenght of STR
             temp = sequence[j:(j + l)]      # Section of sequence size of STR
             if strs[i] in temp:
-                if (strs[i] == sequence[j + l : j + l + l] or strs[i] == sequence[j - l : j + l]): # Count consecutive matchig STR
+                if (strs[i] == sequence[j + l : j + l + l] and strs[i] == sequence[j - l : j]): # Count consecutive matchig STR
                     count += 1
-        count += 1          # add additional count
+        count += 2          # add additional count
         strCount.append(str(count))
         
     return strCount    
