@@ -1,13 +1,12 @@
 import csv
 import sys
-import re, collections
+
 
 def main():
 
     # Ensure correct usage with 2 command-line arguments
     if len(sys.argv) != 3:
         sys.exit("Usage: python dna.py data.csv sequence.txt")
-    
     
     # Read database list into memory
     names = []
@@ -23,10 +22,9 @@ def main():
     
     # Look for each STR from database in sequence and count each occurance
     strCount = (count_STRs(sequence, strs))
-    # print(strs[1:])
-    # print(strCount)
     # Print match or no match
     print(count_matches(names, strCount))
+    
     
 def count_STRs(sequence, strs):
     
@@ -52,6 +50,7 @@ def count_STRs(sequence, strs):
         strCount.append(str(countMax))
         
     return strCount    
+    
         
 def count_matches(names, strCount):
     
