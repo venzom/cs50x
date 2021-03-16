@@ -40,7 +40,7 @@ def count_STRs(sequence, strs):
             if strs[i] in temp:
                 if (strs[i] == sequence[j + l : j + l + l] or strs[i] == sequence[j - l : j + l]): # Count consecutive matchig STR
                     count += 1
-        # count += 1          # add additional count
+        count += 1          # add additional count
         strCount.append(str(count))
         
     return strCount    
