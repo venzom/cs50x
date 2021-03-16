@@ -33,18 +33,19 @@ def count_STRs(sequence, strs):
     # Look for each STR from database in sequence and count each occurance
     strCount = []
     
-    for j in range(1, len(strs)):
-        l = len(strs[j])
+    for i in range(1, len(strs)):
+        l = len(strs[i])
         count = 0
         countMax = 0
-        for i in range(len(sequence)):
+        for j in range(len(sequence)):
             while count > 0:
                 count -= 1
                 continue
-            if sequence[i: i + l] == strs[j]:
-                while sequence[i - l: i] == sequence[i: i + l]:
+            temp = sequence[j: j + l]
+            if temp == strs[i]:
+                while sequence[j - l: j] == sequence[j: j + l]:
                     count += 1
-                    i += l
+                    j += l
                 if count > countMax:
                     countMax = count
         countMax += 1
