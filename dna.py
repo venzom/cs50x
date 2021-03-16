@@ -23,8 +23,7 @@ def main():
     
     # Look for each STR from database in sequence and count each occurance
     strCount = (count_STRs(sequence, strs))
-    #print(strCount)
-    
+    # print(strCount)
     # Print match or no match
     print(count_matches(names, strCount))
     
@@ -32,14 +31,18 @@ def count_STRs(sequence, strs):
     
     # Look for each STR from database in sequence and count each occurance
     strCount = []
-    # for i in range(1, len(strs)):
-    #     print(strs[i])
-    #     strCount[strs[i]] = sequence.count(strs[i])
-    # return strCount
-    
     
     for i in range(1, len(strs)):
-        strCount.append(str(sequence.count(strs[i])))
+        count = 0
+        for j in range(len(sequence)):
+            l = len(strs[i])                # lenght of STR
+            temp = sequence[j:(j + l)]      # Section of sequence size of STR
+            if strs[i] in temp:
+                if (strs[i] == sequence[j + l : j + l + l] or strs[i] == sequence[j - l : j + l]): # Count consecutive matchig STR
+                    count += 1
+        # count += 1          # add additional count
+        strCount.append(str(count))
+        
     return strCount    
         
 def count_matches(names, strCount):
