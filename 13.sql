@@ -7,8 +7,7 @@
 -- SELECT id FROM people WHERE birth = 1958)
 -- WHERE name = "Kevin Bacon";
 
-SELECT DISTINCT(name) FROM people
-JOIN movies ON movies.id = stars.movie_id
-JOIN stars ON stars.person_id =
-(SELECT id FROM people WHERE name = "Kevin Bacon")
-WHERE birth = 1958;
+SELECT name FROM people WHERE id =
+(SELECT person_id FROM stars WHERE movie_id =
+(SELECT movie_id FROM stars WHERE person_id =
+(SELECT id FROM people WHERE name = "Kevin Bacon" AND birth = 1958)));
