@@ -8,6 +8,7 @@ WHERE movie_id IN
 WHERE person_id IN
 (SELECT id FROM people
 WHERE name = "Kevin Bacon" AND birth = 1958)))
+AND NOT name = "Kevin Bacon"
 GROUP BY people.id;
 
 
