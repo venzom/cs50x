@@ -7,4 +7,3 @@ JOIN ratings on ratings.movie_id = movies.id
 WHERE name = "Chadwick Boseman"
 ORDER BY rating DESC
 LIMIT 5;
-;
