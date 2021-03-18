@@ -2,6 +2,7 @@
    For movies with the same rating, order alphabetically */
 SELECT title FROM movies
 JOIN ratings ON movies.id = ratings.movie_id
-WHERE year = 2010;
+WHERE year = 2010
+ORDER BY rating;
 
 
