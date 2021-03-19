@@ -163,8 +163,19 @@ Ernest (367) 555-5533 | Berthold (375) 555-8161
 Madison (286) 555-6063 | James (676) 555-6554 
 Russell (770) 555-1861 | Philip (725) 555-3243*/
 
+-- Match names to callers
 SELECT name, phone_number FROM people 
 WHERE license_plate IN
 (SELECT license_plate FROM courthouse_security_logs
 WHERE month = 7 AND day = 28 AND hour = 10
 AND activity = "exit");
+/*name | phone_number
+Patrick | (725) 555-4692
+Amber | (301) 555-4174
+Elizabeth | (829) 555-5269
+Roger | (130) 555-0289
+Madison | (286) 555-6063
+Danielle | (389) 555-5198
+Russell | (770) 555-1861
+Evelyn | (499) 555-9472
+Ernest | (367) 555-5533*/
