@@ -202,8 +202,8 @@ def register():
         password = request.form.get("password")
         if not password:
             return apology("Please provide a password")
-        elif len(password) < 9 or any((c in chars) for c in password):
-            return apology("Password must be 8 characters long and contain at least 1 number")
+        # elif len(password) < 9 or any((c in chars) for c in password):
+        #     return apology("Password must be 8 characters long and contain at least 1 number")
         confirmation = request.form.get("confirmation")
         if not confirmation:
             return apology("Please retype password")
