@@ -59,7 +59,7 @@ def index():
         db.execute("""UPDATE transactions SET price = :price,
                   total = :total WHERE user = :user
                   AND symbol = :symbol""", user=session["user_id"], price=price, \
-                  total=stock_total, symbol=symbol)
+                   total=stock_total, symbol=symbol)
         total += stock_total
 
     stocks = db.execute("SELECT * FROM transactions WHERE user = :user", user=session["user_id"])
