@@ -82,8 +82,8 @@ def buy():
         shares = request.form.get("shares")
         if not shares:
             return apology("missing shares")
-        # try:
-        #     val = int()
+        elif not str.isdigit(shares):
+            return apology("invalid shares")
         shares = int(shares)
         if shares < 1:
             return apology("invalid shares")
