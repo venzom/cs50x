@@ -217,7 +217,7 @@ def register():
             else:
                 continue
         db.execute("INSERT INTO users (username, hash) VALUES(?, ?)", username, hashed)
-        return redirect("../login")
+        return redirect("/")
 
 @app.route("/sell", methods=["GET", "POST"])
 @login_required
