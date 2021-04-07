@@ -198,22 +198,22 @@ def register():
         chars = set("0123456789")
         username = request.form.get("username")
         if not username:
-            return render_template("register.html", message="Please provide a username")
+            return apology("Please provide a username")
         password = request.form.get("password")
         if not password:
-            return render_template("register.html", message="Please provide a password")
+            return apology("Please provide a password")
         elif len(password) < 9 or any((c in chars) for c in password):
-            return render_template("register.html", message="Password must be 8 characters long and contain at least 1 number")
+            return apology("Password must be 8 characters long and contain at least 1 number")
         retype = request.form.get("retype")
         if not retype:
-            return render_template("register.html", message="Please retype password")
+            return apology("Please retype password")
         if password != retype:
-            return render_template("register.html", message="Both passwords must match")
+            return apology("Both passwords must match")
         hashed = generate_password_hash(password)
         rows = db.execute("SELECT username FROM users")
         for row in rows:
             if row["username"] == username:
-                return render_template("register.html", message="Username already taken")
+                return apology("Username already taken")
             else:
                 continue
         db.execute("INSERT INTO users (username, hash) VALUES(?, ?)", username, hashed)
