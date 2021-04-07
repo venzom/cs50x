@@ -213,7 +213,7 @@ def register():
         rows = db.execute("SELECT username FROM users")
         for row in rows:
             if row["username"] == username:
-                return apology("Username already taken")
+                return render_template("register.html", message="Username already taken")
             else:
                 continue
         db.execute("INSERT INTO users (username, hash) VALUES(?, ?)", username, hashed)
