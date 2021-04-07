@@ -204,10 +204,10 @@ def register():
             return apology("Please provide a password")
         elif len(password) < 9 or any((c in chars) for c in password):
             return apology("Password must be 8 characters long and contain at least 1 number")
-        retype = request.form.get("retype")
-        if not retype:
+        confirmation = request.form.get("confirmation")
+        if not confirmation:
             return apology("Please retype password")
-        if password != retype:
+        if password != confirmation:
             return apology("Both passwords must match")
         hashed = generate_password_hash(password)
         rows = db.execute("SELECT username FROM users")
