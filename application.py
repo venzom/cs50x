@@ -211,13 +211,13 @@ def register():
             return apology("Both passwords must match")
         hashed = generate_password_hash(password)
         rows = db.execute("SELECT username FROM users")
-        for row in rows:
-            if row["username"] == username:
-                return render_template("register.html", message="Username already taken")
-            else:
-                continue
+        # for row in rows:
+        #     if row["username"] == username:
+        #         return render_template("register.html", message="Username already taken")
+        #     else:
+        #         continue
         db.execute("INSERT INTO users (username, hash) VALUES(?, ?)", username, hashed)
-        return redirect("/")
+        return redirect("../login")
 
 @app.route("/sell", methods=["GET", "POST"])
 @login_required
