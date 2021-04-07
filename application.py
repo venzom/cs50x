@@ -79,9 +79,12 @@ def buy():
         symbol = str.upper(request.form.get("symbol"))
         if not symbol:
             return apology("Missing symbol")
-        shares = int(request.form.get("shares"))
+        shares = request.form.get("shares")
         if not shares:
             return apology("missing shares")
+        # try:
+        #     val = int()
+        shares = int(shares)
         if shares < 1:
             return apology("invalid shares")
         else:
@@ -211,11 +214,11 @@ def register():
             return apology("Both passwords must match")
         hashed = generate_password_hash(password)
         rows = db.execute("SELECT username FROM users")
-        # for row in rows:
-        #     if row["username"] == username:
-        #         return render_template("register.html", message="Username already taken")
-        #     else:
-        #         continue
+        for row in rows:
+            if row["username"] == username:
+                return render_template("register.html", message="Username already taken")
+            else:
+                continue
         db.execute("INSERT INTO users (username, hash) VALUES(?, ?)", username, hashed)
         return redirect("../login")
 
