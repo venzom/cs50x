@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+    <form action="/login" method="post">
+        <div class="form-group">
+            <p>
+                A share of {{ displayquote.name }} ({{ displayquote.symbol }}) costs {{ displayquote.price | usd }}
+            </p>
+    </form>
+{% endblock %}
