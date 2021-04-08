@@ -1,0 +1,157 @@
+html {
+  scroll-behavior: smooth;
+  /*height: 100%;*/
+}
+
+.full-screen {
+	height: 100vh;
+	padding-top: 46px;
+	background-size: cover;
+	background-position: center;
+	justify-content: center
+	align-items: center;
+	top: 0;
+}
+
+body, html {
+    margin: 0;
+    height: 100%;
+}
+#home {
+	color: #fff;
+	background-color: #696969;
+	background-image: url(images/home.jpg);
+}
+#about {color: #fff; background-color: #D3D3D3;}
+#resume {color: #fff; background-color: #ff9800;}
+#contact {color: #fff; background-color: #00bcd4;}
+#blog {color: #fff; background-color: #20c997;}
+
+.navbar {
+	position: fixed;
+	width: 100%;
+}
+.navbar-custom {
+    background-color: #20c997;
+    color: white;
+    }
+
+.navbar-custom .navbar-brand,
+    .navbar-custom .navbar-text ,
+    .navbar-custom .nav-link {
+        color: white;
+}
+
+.navbar-custom .navbar-brand:hover,
+.navbar-custom .navbar-brand:focus {
+    color: #dcf9f1;
+}
+.navbar-custom .navbar-nav > .active > a,
+.navbar-custom .navbar-nav > .active > a:hover,
+.navbar-custom .navbar-nav > .active > a:focus {
+    color: #20c997;
+    background-color: white;
+}
+.navbar-custom .navbar-toggler,
+.navbar-custom .navbar-toggle .icon-bar{
+            border-color: white;
+        }
+/*.fp-section.fp-table,*/
+/*.fp-slide.fp-table {*/
+/*	display: table;*/
+/*	table-layout: fixed;*/
+/*	width: 100%;*/
+/*}*/
+/*.fp-section {*/
+/*    position: relative;*/
+/*    -webkit-box-sizing: border-box;*/
+/*    -moz-box-sizing: border-box;*/
+/*    box-sizing: border-box;*/
+/*}*/
+
+.nav-link {
+            color: rgba(32,201,151);
+        }
+
+.nav-item>a:hover {
+    color: white;
+    background-color: #1ec291;
+}
+
+h1{
+		font-size: 5em;
+		font-family: arial,helvetica;
+		color: #fff;
+		margin:0;
+		padding:0;
+	}
+
+	/* Centered texts in each section
+	* --------------------------------------- */
+.section{
+	/*padding-top: 46px;*/
+	height: 100vh;
+	/*width: 100%;*/
+	/*margin: auto;*/
+	/*display: flex;*/
+	background-size: cover;
+	background-position: center;
+	justify-content: center
+	align-items: center;
+	top: 0;
+	/*position: relative;*/
+}
+	/* Backgrounds will cover all the section
+	* --------------------------------------- */
+	/*#home,*/
+	/*#about,*/
+	/*#resume,*/
+	/*#contact,*/
+ /*   #blog,*/
+ /*   #slide2{*/
+	/*	background-size: cover;*/
+	/*	background-attachment: fixed;*/
+	/*}*/
+
+	/* Defining each sectino background and styles
+	* --------------------------------------- */
+	/*#home{*/
+	/*	background-image: url(imgs/bg1.jpg);*/
+	/*}*/
+	/*#home h1{*/
+	/*	top: 50%;*/
+	/*	transform: translateY(-50%);*/
+	/*	position: absolute;*/
+	/*}*/
+	/*#resume{*/
+	/*	background-image: url(imgs/bg3.jpg);*/
+		/*padding: 6% 0 0 0;*/
+	/*}*/
+	/*#contact{*/
+	/*	background-image: url(imgs/bg4.jpg);*/
+	/*	padding: 6% 0 0 0;*/
+	/*}*/
+	/*#contact h1{*/
+	/*	color: #000;*/
+	/*}*/
+ /*   #blog{*/
+	/*	background-image: url(imgs/bg3.jpg);*/
+	/*	padding: 6% 0 0 0;*/
+
+	/*Adding background for the slides
+	* --------------------------------------- */
+	/*#slide1{*/
+	/*	background-image: url(imgs/bg2.jpg);*/
+	/*	padding: 6% 0 0 0;*/
+	/*}*/
+	/*#slide2{*/
+	/*	background-image: url(imgs/bg5.jpg);*/
+	/*	padding: 6% 0 0 0;*/
+	/*}*/
+
+
+	/* Bottom menu
+	* --------------------------------------- */
+	/*#infoMenu li a {*/
+	/*	color: #fff;*/
+	/*}*/
